@@ -1,0 +1,43 @@
+{
+  "name": "bbc.github.io",
+  "version": "1.0.0",
+  "description": "An index of all BBC repos on GitHub.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "bbc"
+  ],
+  "author": "",
+  "config": {
+    "orgs": {
+      "whitelist": [
+        "BBCOpenSource",
+        "BBC-Childrens",
+        "bbc-fm-nk-core-eng",
+        "bbc-test",
+        "fmtvp",
+        "BBC-Location-Services",
+        "bbc-contentdiscovery",
+        "BBC-News-Labs",
+        "BBC-Data",
+        "myBBC",
+        "bbcsnippets",
+        "BBC-Knowlearn",
+        "bbc-sport",
+        "iplayer",
+        "BBCVisualJournalism",
+        "bbcarchdev",
+        "bbcrd",
+        "BBC-News",
+        "BBC"
+      ]
+    }
+  },
+  "license": "Apache-2",
+  "dependencies": {
+    "es6-promise": "^2.0.0",
+    "octonode": "^0.6.10"
+  }
+}
