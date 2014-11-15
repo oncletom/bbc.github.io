@@ -1,13 +1,18 @@
 {
   "name": "bbc.github.io",
   "version": "1.0.0",
-  "description": "An index of all BBC repos on GitHub.",
-  "main": "index.js",
+  "description": "An index of all BBC public repositories on GitHub.",
+  "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "npm run update && webpack -p --progress && node bin/render.js",
+    "watch": "webpack --watch --progress --colors",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "update": "node bin/cli.js"
   },
   "keywords": [
-    "bbc"
+    "bbc",
+    "open source",
+    "oss"
   ],
   "author": "",
   "config": {
@@ -38,6 +43,17 @@
   "license": "Apache-2",
   "dependencies": {
     "es6-promise": "^2.0.0",
-    "octonode": "^0.6.10"
+    "node-jsx": "^0.12.0",
+    "octonode": "^0.6.10",
+    "react": "^0.12.0"
+  },
+  "devDependencies": {
+    "css-loader": "^0.9.0",
+    "json-loader": "^0.5.1",
+    "jsx-loader": "^0.12.1",
+    "less": "^1.7.5",
+    "less-loader": "^0.7.7",
+    "style-loader": "^0.8.2",
+    "webpack": "^1.4.13"
   }
 }
