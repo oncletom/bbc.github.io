@@ -53,6 +53,7 @@
     "jsx-loader": "^0.12.1",
     "less": "^1.7.5",
     "less-loader": "^0.7.7",
+    "parse-link-header": "^0.2.0",
     "style-loader": "^0.8.2",
     "webpack": "^1.4.13"
   }
