@@ -5,9 +5,9 @@
   "main": "app.js",
   "scripts": {
     "build": "npm run update && npm run build-bundle && npm run build-html",
-    "build-bundle": "webpack -p --progress",
+    "build-bundle": "NODE_ENV=production browserify app.js -o dist/bundle.js",
     "build-html": "node bin/render.js",
-    "watch": "webpack --watch --progress --colors",
+    "watch": "watchify app.js -o dist/bundle.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "update": "node bin/update.js",
     "deploy": "gh-pages-deploy"
@@ -49,22 +49,27 @@
       "build"
     ]
   },
+  "browserify": {
+    "transform": [
+      "lessify",
+      "reactify"
+    ]
+  },
   "license": "Apache-2",
   "dependencies": {
     "es6-promise": "^2.0.0",
-    "node-jsx": "^0.12.0",
     "octonode": "^0.6.10",
     "react": "^0.12.0"
   },
   "devDependencies": {
-    "css-loader": "^0.9.0",
+    "browserify": "^6.3.2",
     "gh-pages-deploy": "^0.1.1",
-    "json-loader": "^0.5.1",
-    "jsx-loader": "^0.12.1",
     "less": "^1.7.5",
-    "less-loader": "^0.7.7",
+    "lessify": "^0.4.1",
+    "node-jsx": "^0.12.0",
     "parse-link-header": "^0.2.0",
-    "style-loader": "^0.8.2",
-    "webpack": "^1.4.13"
+    "reactify": "^0.16.0",
+    "through2": "^0.6.3",
+    "watchify": "^2.1.1"
   }
 }
