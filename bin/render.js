@@ -1,5 +1,9 @@
 'use strict';
 
+/**
+ * @example node bin/render.js input.html -o output.html
+ */
+
 require("node-jsx").install({ extension: ".jsx" });
 
 // neutralizes any require('foo/bar.less');
@@ -12,21 +16,27 @@ var path = require('path');
 var through = require('through2');
 var React = require('react');
 
-var App = require('../app.js');
-var repos = require('../data/repos.json');
-
-var body = React.renderToString(React.createElement(App, { repos: repos }));
-var inputFile = path.join(__dirname, '..', 'src', 'index.html');
-var outputFile = path.join(__dirname, '..', 'dist', 'index.html');
+var basePath = path.join(__dirname, '..');
+var inputFile = path.join(basePath, process.argv[2]);
+var outputFile = path.join(basePath, process.argv[4]);
 
 fs.createReadStream(inputFile)
   .pipe(through(function(chunk, enc, done){
-    chunk = String(chunk)
+    var frag = chunk.toString('utf8');
+    var html = '';
+    var reactMod = null;
 
-    if (chunk.indexOf('<main>') !== -1){
-      chunk = chunk.replace(/(<main>)/, '$1' + body);
+    var attrMatch = frag.match('data-react-inject="([^"]+)"([^>]*)>');
+
+    if (attrMatch){
+      reactMod = require(path.join(basePath, attrMatch[1]));
+      html = React.renderToString(React.createElement(reactMod, reactMod.__reactData || null));
+
+      done(null, frag.replace(attrMatch[0], attrMatch[0] + html));
+    }
+    else {
+      done(null, frag);
     }
 
-    done(null, chunk);
   }))
   .pipe(fs.createWriteStream(outputFile));

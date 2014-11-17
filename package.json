@@ -6,7 +6,7 @@
   "scripts": {
     "build": "npm run update && npm run build-bundle && npm run build-html",
     "build-bundle": "NODE_ENV=production browserify app.js -o dist/bundle.js",
-    "build-html": "node bin/render.js",
+    "build-html": "node bin/render.js src/index.html -o dist/index.html",
     "watch": "watchify app.js -o dist/bundle.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "update": "node bin/update.js",
@@ -51,8 +51,6 @@
   },
   "browserify": {
     "transform": [
-      "lessify",
-      "reactify"
     ]
   },
   "license": "Apache-2",
