@@ -6,7 +6,7 @@
   "scripts": {
     "build": "npm run update && npm run build-bundle && npm run build-html",
     "build-bundle": "NODE_ENV=production browserify app.js -o dist/bundle.js",
-    "build-html": "node bin/render.js src/index.html -o dist/index.html",
+    "build-html": "react-inliner src/index.html -o dist/index.html",
     "watch": "watchify app.js -o dist/bundle.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "update": "node bin/update.js",
@@ -51,10 +51,13 @@
   },
   "browserify": {
     "transform": [
+      "lessify",
+      "reactify"
     ]
   },
   "license": "Apache-2",
   "dependencies": {
+    "react-inliner": "^1.0.0",
     "es6-promise": "^2.0.0",
     "octonode": "^0.6.10",
     "react": "^0.12.0"
@@ -64,10 +67,8 @@
     "gh-pages-deploy": "^0.1.1",
     "less": "^1.7.5",
     "lessify": "^0.4.1",
-    "node-jsx": "^0.12.0",
     "parse-link-header": "^0.2.0",
     "reactify": "^0.16.0",
-    "through2": "^0.6.3",
     "watchify": "^2.1.1"
   }
 }
