@@ -22,7 +22,9 @@ var App = React.createClass({
   render: function(){
     return (<div>
       <header>
-        <p>Proudly sharing {this.props.repos.length} Open Source projects.</p>
+        <h1>BBC Open Source</h1>
+
+        <p>Proudly sharing {this.props.repos.length} Open Source initiatives.</p>
 
         <RepoFilters repos={this.props.repos} onUpdate={this.handleFilters} />
       </header>
