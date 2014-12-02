@@ -61,7 +61,8 @@
     "language-map": "^1.0.0",
     "octonode": "^0.6.10",
     "react": "^0.12.0",
-    "react-inliner": "^1.0.0"
+    "react-inliner": "^1.0.0",
+    "react-classset": "git://github.com/oncletom/react-classset"
   },
   "devDependencies": {
     "browserify": "^6.3.2",
