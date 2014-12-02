@@ -17,6 +17,21 @@ module.exports  = React.createClass({
     };
   },
 
+  printLanguagesButtons: function(){
+    var languages = this.getLanguagesFromList(this.props.repos);
+
+    return languages.map(function(lang){
+      var classNames = cx({
+        'language__toggle-button': true,
+        'language__toggle-button--selected': this.isLangActive(lang)
+      });
+
+      return (<button onClick={this.toggleLang.bind(this, lang)} className={classNames}>
+        <Language id={lang} />
+      </button>)
+    }, this);
+  },
+
   render: function(){
     return (
       <nav>
@@ -85,20 +100,6 @@ module.exports  = React.createClass({
 
   isLangActive: function(lang){
     return this.state.languagesWhitelist.indexOf(lang) !== -1;
-  },
-
-  printLanguagesButtons: function(){
-    var languages = this.getLanguagesFromList(this.props.repos);
-
-    return languages.map(function(lang){
-      var classNames = cx({
-        'selected': this.isLangActive(lang)
-      });
-
-      return (<button onClick={this.toggleLang.bind(this, lang)} className={classNames}>
-        <Language id={lang} />
-      </button>)
-    }, this);
   },
 
   getLanguagesFromList: function(repos){
