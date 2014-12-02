@@ -6,17 +6,9 @@ var Repo = require('./Repository.jsx');
 module.exports = React.createClass({
   render: function(){
     var repos = this.props.repos.map(function(repo) {
-      return (<Repo data={repo} key={repo.id} />);
+      return (<Repo data={repo} key={'ghid-' + repo.id} />);
     });
 
-    return (
-      <div className="repositories-list">
-        <header>
-          {repos.length} public repositories.
-        </header>
-
-        {repos}
-      </div>
-    );
+    return (<div className="repositories-list">{repos}</div>);
   }
 });

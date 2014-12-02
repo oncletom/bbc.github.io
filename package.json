@@ -4,10 +4,11 @@
   "description": "An index of all BBC public repositories on GitHub.",
   "main": "app.js",
   "scripts": {
-    "build": "npm run update && npm run build-bundle && npm run build-html",
-    "build-bundle": "NODE_ENV=production browserify -g uglifyify app.js -o dist/bundle.js",
+    "build": "npm run build-bundle && npm run build-html && npm run build-css",
+    "build-bundle": "NODE_ENV=production browserify -g uglifyify app.jsx -o dist/bundle.js",
     "build-html": "react-inliner src/index.html -o dist/index.html",
-    "watch": "watchify app.js -o dist/bundle.js",
+    "build-css": "lessc src/app.less dist/app.css",
+    "watch": "watchify app.jsx -v -o dist/bundle.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "update": "node bin/update.js",
     "deploy": "gh-pages-deploy"
@@ -51,7 +52,6 @@
   },
   "browserify": {
     "transform": [
-      "lessify",
       "reactify"
     ]
   },

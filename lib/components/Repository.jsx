@@ -3,12 +3,9 @@
 var React = require('react');
 var Language = require('./Language.jsx');
 
-require('./Repository.less');
-
 var Repo = React.createClass({
   render: function(){
     var repo = this.props.data;
-
     return (
       <article className="repository">
         <h2>{repo.name}</h2>

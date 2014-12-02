@@ -16,9 +16,7 @@ module.exports = React.createClass({
       backgroundColor: languageMap[this.props.id].color
     };
 
-    return (<span className="software-language">
-      <span className="software-language__badge" style={style} />
-
+    return (<span className="software-language" style={style}>
       {this.props.id}
     </span>);
   }
