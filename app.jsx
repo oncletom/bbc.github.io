@@ -24,7 +24,10 @@ var App = React.createClass({
       <header>
         <h1>BBC Open Source</h1>
 
-        <p>Proudly sharing {this.props.repos.length} Open Source initiatives.</p>
+        <p>
+          Proudly sharing {this.props.repos.length} Open Source initiatives
+          we <em>make</em> and <em>contribute</em> to.
+        </p>
 
         <RepoFilters repos={this.props.repos} onUpdate={this.handleFilters} />
       </header>
