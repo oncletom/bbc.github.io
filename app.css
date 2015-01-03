@@ -1,0 +1,55 @@
+body {
+  background: #fff;
+  color: #404040;
+  font-family: Helmet, Freesans, Helvetica, Arial, sans-serif;
+  font-size: 140%;
+  font-weight: 400;
+  list-height: 1.4;
+}
+ul,
+ol {
+  padding: 0;
+  margin: 0;
+}
+h1 {
+  font-weight: 100;
+}
+h1,
+h2 {
+  margin: 0;
+}
+p {
+  margin: 0 0 8px;
+  padding: 8px 0 0;
+}
+.software-language,
+.metadata {
+  border-radius: 3px;
+  padding: .2em .5em;
+}
+.software-language {
+  color: #fff;
+  text-shadow: 1px 1px rgba(0, 0, 0, 0.7);
+}
+.language__toggle-button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  line-height: 2;
+  padding: 0;
+}
+.language__toggle-button--selected {
+  font-weight: bold;
+}
+.repository {
+  margin: 1.5em 0;
+}
+.repository__metadata > li {
+  display: inline-block;
+  line-height: 2;
+  margin-right: 8px;
+}
+.repository .metadata {
+  border: 1px solid #333;
+  white-space: nowrap;
+}
