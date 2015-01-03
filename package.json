@@ -5,13 +5,13 @@
   "main": "app.js",
   "scripts": {
     "build": "npm run build-bundle && npm run build-html && npm run build-css",
-    "build-bundle": "NODE_ENV=production browserify -g uglifyify app.jsx -o dist/bundle.js",
+    "build-bundle": "browserify -g uglifyify app.jsx -o dist/bundle.js",
     "build-html": "react-inliner src/index.html -o dist/index.html",
     "build-css": "lessc src/app.less dist/app.css",
     "watch": "watchify app.jsx -v -o dist/bundle.js",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha test/**/*",
     "update": "node bin/update.js",
-    "deploy": "gh-pages-deploy"
+    "deploy": "NODE_ENV=production gh-pages-deploy"
   },
   "keywords": [
     "bbc",
@@ -21,27 +21,34 @@
   "author": "",
   "config": {
     "orgs": {
-      "whitelist": [
-        "BBCOpenSource",
-        "BBC-Childrens",
-        "bbc-fm-nk-core-eng",
-        "bbc-test",
-        "fmtvp",
-        "BBC-Location-Services",
-        "bbc-contentdiscovery",
-        "BBC-News-Labs",
-        "BBC-Data",
-        "myBBC",
-        "bbcsnippets",
-        "BBC-Knowlearn",
-        "bbc-sport",
-        "iplayer",
-        "BBCVisualJournalism",
-        "bbcarchdev",
-        "bbcrd",
-        "BBC-News",
-        "BBC"
-      ]
+      "BBCMobileApps": true,
+      "BBCOpenSource": true,
+      "BBC-Childrens": true,
+      "bbc-fm-nk-core-eng": true,
+      "bbc-test": true,
+      "fmtvp": true,
+      "BBC-Location-Services": true,
+      "bbc-contentdiscovery": true,
+      "BBC-News-Labs": true,
+      "BBC-Data": true,
+      "myBBC": true,
+      "bbcsnippets": true,
+      "BBC-Knowlearn": true,
+      "bbc-sport": true,
+      "iplayer": true,
+      "BBCVisualJournalism": {
+        "exclude": [
+          "^newsspec"
+        ]
+      },
+      "bbcarchdev": true,
+      "bbcrd": {
+        "exclude": [
+          ".prototyping.bbc.co.uk$"
+        ]
+      },
+      "BBC-News": true,
+      "BBC": true
     }
   },
   "gh-pages-deploy": {
@@ -66,11 +73,14 @@
   },
   "devDependencies": {
     "browserify": "^6.3.2",
+    "chai": "^1.10.0",
     "gh-pages-deploy": "^0.1.1",
     "less": "^1.7.5",
     "lessify": "^0.4.1",
+    "mocha": "^2.1.0",
     "parse-link-header": "^0.2.0",
     "reactify": "^0.16.0",
+    "rewire": "^2.1.3",
     "uglifyify": "^2.6.0",
     "watchify": "^2.1.1"
   }
