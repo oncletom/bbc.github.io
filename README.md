@@ -9,6 +9,8 @@ Are filtered out:
 - repositories with an empty description
 - *.github.io repositories
 
+![](demo.png)
+
 # Install
 
     npm install
